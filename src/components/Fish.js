@@ -16,7 +16,7 @@ export default class Fish extends Component {
                 <button
                     disabled={!isAvail}
                     onClick={() => {
-                        this.props.addToCart(this.props.key2);
+                        this.props.addToOrder(this.props.key2);
                     }}>
                     {isAvail ? 'Add To Cart' : 'Sold Out'}
                 </button>
