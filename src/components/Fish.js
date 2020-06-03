@@ -6,7 +6,6 @@ export default class Fish extends Component {
     static propTypes = {
         details: PropTypes.shape({
             name: PropTypes.string.isRequired,
-            price: PropTypes.string.isRequired,
             desc: PropTypes.string.isRequired,
             status: PropTypes.string.isRequired,
             price: PropTypes.number.isRequired,

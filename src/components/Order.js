@@ -7,11 +7,10 @@ class Order extends React.Component {
     //Exact same for every single componenet
     static propTypes = {
         fishes: PropTypes.shape({
-            name: PropTypes.string.isRequired,
-            price: PropTypes.string.isRequired,
-            desc: PropTypes.string.isRequired,
-            status: PropTypes.string.isRequired,
-            price: PropTypes.number.isRequired,
+            name: PropTypes.string,
+            desc: PropTypes.string,
+            status: PropTypes.string,
+            price: PropTypes.number,
         }),
         order: PropTypes.object,
         removeFromOrder: PropTypes.func.isRequired,
