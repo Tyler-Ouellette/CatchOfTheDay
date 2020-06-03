@@ -3,20 +3,26 @@ import PropTypes from 'prop-types';
 
 class EditFishForm extends React.Component {
     static propTypes = {
-        index: PropTypes.shape({
+        fish: PropTypes.shape({
+            image: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired,
-            price: PropTypes.string.isRequired,
             desc: PropTypes.string.isRequired,
             status: PropTypes.string.isRequired,
             price: PropTypes.number.isRequired,
-        }).isRequired,
-        fish: PropTypes.string.isRequired,
+        }),
+        index: PropTypes.string.isRequired,
         updateFish: PropTypes.func.isRequired,
     };
     handleChange = event => {
+        console.log(event.currentTarget.value);
+        // update that fish
+        // 1. Take a copy of the curernt fish
         const updatedFish = {
             ...this.props.fish,
-            [event.currentTarget.name]: event.currentTarget.value,
+            [event.currentTarget.name]:
+                event.currentTarget.name === 'price'
+                    ? parseFloat(event.currentTarget.value)
+                    : event.currentTarget.value,
         };
         this.props.updateFish(this.props.index, updatedFish);
     };
@@ -26,12 +32,8 @@ class EditFishForm extends React.Component {
                 <input type="text" name="name" onChange={this.handleChange} value={this.props.fish.name} />
                 <input type="text" name="price" onChange={this.handleChange} value={this.props.fish.price} />
                 <select type="text" name="status" onChange={this.handleChange} value={this.props.fish.status}>
-                    <option onChange={this.handleChange} value="available">
-                        Fresh!
-                    </option>
-                    <option onChange={this.handleChange} value="unavailable">
-                        Sold Out!
-                    </option>
+                    <option value="available">Fresh!</option>
+                    <option value="unavailable">Sold Out!</option>
                 </select>
                 <textarea name="desc" onChange={this.handleChange} value={this.props.fish.desc} />
                 <input type="text" name="image" onChange={this.handleChange} value={this.props.fish.image} />
